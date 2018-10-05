@@ -1,25 +1,8 @@
 package skiplist
 
-import "sync"
-
-type skipListNode struct {
-	Key  interface{}
-	Next *skipListNode
-	sync.RWMutex
-}
-
 type skipListIterator struct {
 	list *SkipList
 	node *skipListNode
-}
-
-type SkipList struct {
-	maxHeight int
-	head      *skipListNode
-
-	node struct {
-		key interface{}
-	}
 }
 
 func (i *skipListIterator) Valid() bool {
@@ -47,9 +30,5 @@ func (i *skipListIterator) SeekToFirst() {
 }
 
 func (i *skipListIterator) SeekToLast() {
-
-}
-
-func (l *SkipList) Contains(key interface{}) bool {
 
 }
