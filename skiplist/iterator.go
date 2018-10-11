@@ -41,8 +41,8 @@ func (i *skipListIterator) SeekToLast() {
 	}
 }
 
-func checkValid(iter *skipListIterator) {
-	if !iter.Valid() {
+func checkValid(iterator *skipListIterator) {
+	if !iterator.Valid() {
 		panic("SkipList iterator not valid!")
 	}
 }
