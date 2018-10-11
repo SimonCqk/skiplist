@@ -15,7 +15,7 @@ func (i *skipListIterator) Key() interface{} {
 
 func (i *skipListIterator) Next() {
 	checkValid(i)
-	i.node = i.node.Next()
+	i.node = i.node.Next(0)
 }
 
 func (i *skipListIterator) Prev() {
@@ -31,7 +31,7 @@ func (i *skipListIterator) Seek(target interface{}) {
 }
 
 func (i *skipListIterator) SeekToFirst() {
-	i.node = i.list.head.Next()
+	i.node = i.list.head.Next(0)
 }
 
 func (i *skipListIterator) SeekToLast() {
@@ -41,8 +41,8 @@ func (i *skipListIterator) SeekToLast() {
 	}
 }
 
-func checkValid(it *skipListIterator) {
-	if !it.Valid() {
+func checkValid(iter *skipListIterator) {
+	if !iter.Valid() {
 		panic("SkipList iterator not valid!")
 	}
 }

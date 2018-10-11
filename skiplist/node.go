@@ -4,18 +4,18 @@ import "sync"
 
 type skipListNode struct {
 	Key  interface{}
-	next *skipListNode
+	next []*skipListNode
 	sync.RWMutex
 }
 
-func (n *skipListNode) Next() *skipListNode {
+func (n *skipListNode) Next(level int) *skipListNode {
 	n.RLock()
 	defer n.RUnlock()
-	return n.next
+	return n.next[level]
 }
 
-func (n *skipListNode) SetNext(next *skipListNode) {
+func (n *skipListNode) SetNext(level int, next *skipListNode) {
 	n.Lock()
-	n.next = next
+	n.next[level] = next
 	n.Unlock()
 }
